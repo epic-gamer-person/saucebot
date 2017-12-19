@@ -35,6 +35,7 @@ class Bot:
 
   def run(self):
     reddit = praw.Reddit('sauce_bot')
+    # edit the string to desired subreddits
     subreddit = reddit.subreddit("konchadesu+traaaaaaannnnnnnnnns+whataweeb+animenocontext+animefunny")
 
     self.load_history()
@@ -56,14 +57,14 @@ class Bot:
         new_comment = self.history.get(comment.submission.id) is None
 
         if contains_re and top_level_comment and new_comment:
-#          self.history[submission.id] = True
+          self.history[comment.submission.id] = True
           print("\n" + comment.body)
-          response = muterun_js('sauce.js', comment.submission.url)
+          response = muterun_js('sauce.js', comment.submission.url) # run script to call saucenao api
           if response.exitcode == 0:
             if response.stdout != "\n":
               reply = self.build_reply(response)
               print(reply)
-#              comment.reply(reply)
+              comment.reply(reply)
               print("Sent reply!")
             else:
               print("No matches.")
