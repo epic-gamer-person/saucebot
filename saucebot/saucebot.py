@@ -13,7 +13,7 @@ import traceback
 from message import Message
 from saucenaopy import SauceNAO
 
-class Bot:
+class SauceBot:
 
   def __init__(self):
     self.ratelimit = 600
@@ -129,5 +129,5 @@ class Bot:
     return reply
 
 if __name__ == '__main__':
-  Bot().run()
+  SauceBot().run()
 
